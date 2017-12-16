@@ -1,8 +1,16 @@
 extends ../layouts/main
 
 block content
-  img(src="http://localhost:5000/feed")
-
+  ul
+    each camera in cameras
+      li
+        a(href="/cameras?id=" + camera._id) #{camera.name}
+        form(action="/cameras/remove" method="POST")
+          input(type="hidden" name="name" value=camera.name)
+          input(type="submit" value="Remove")
   form(action="/cameras/add" method="POST")
+    | Camera name
+    input(type="text" name="name")
+    | Camera url
     input(type="text" name="address")
     input(type="submit" value="Add")
