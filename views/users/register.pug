@@ -1,14 +1,16 @@
-form (action="/users/register" method="POST")
-  Username
-  input (type="text" name="username" )
+extends ../layouts/main
+
+block content
+  form(action="/users/register" method="POST") Username
+  input(type="text" name="username" )
   br
-  Password
-  input (type="password" name="password" )
+  | Password
+  input(type="password" name="password" )
   br
-  First Name
-  input (type="text" name="firstName" )
+  | First Name
+  input(type="text" name="firstName" )
   br
-  Last Name
-  input (type="text" name="lastName" )
+  | Last Name
+  input(type="text" name="lastName" )
   br
-  input (type="submit" value="Register" )
+  input(type="submit" value="Register" )
