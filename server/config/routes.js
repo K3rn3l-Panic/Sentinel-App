@@ -14,6 +14,7 @@ module.exports = (app) => {
   app.post('/users/logout', controllers.users.logout);
 
   app.get('/cameras', controllers.camera.getStream);
+  app.post('/cameras/add', controllers.camera.addCamera);
 
   app.get('/faces', controllers.faces.getFacesPage);
 

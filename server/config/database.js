@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../data/User');
+require('../data/Camera');
 
 mongoose.Promise = global.Promise;
 
