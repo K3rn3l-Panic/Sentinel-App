@@ -43,6 +43,7 @@ module.exports = {
 	      encoding: response.data.encoding,
 	      image: base64Image
 	    });
+	    res.redirect('/faces');
 	  }).catch(function(error) { 
         console.log(error);
     });
