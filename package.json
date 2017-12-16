@@ -12,11 +12,15 @@
     "dev": "./node_modules/.bin/nodemon index.js",
     "escheck": "./node_modules/.bin/eslint ."
   },
-  "keywords": ["sentinel", "app"],
+  "keywords": [
+    "sentinel",
+    "app"
+  ],
   "author": "Kernel Panic",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.17.2",
+    "bootstrap": "^4.0.0-beta.2",
     "cookie-parser": "1.4.3",
     "express": "4.15.3",
     "express-handlebars": "3.0.0",
