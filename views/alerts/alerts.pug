@@ -2,3 +2,6 @@ extends ../layouts/main
 
 block content
   h1 Listing and removing alerts
+  ul
+    each al in alerts
+      li=al.name +'   '+ al.image+'   '+al.timestamp
