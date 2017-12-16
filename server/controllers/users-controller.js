@@ -19,14 +19,14 @@ module.exports = {
       salt,
       hashedPass: hashedPassword,
     }).then((user) => {
-      req.logIn(user, (err, user) => {
-        if (err) {
-          res.locals.globalError = err;
-          res.render('users/register', user);
-        }
+      // req.logIn(user, (err, user) => {
+      //   if (err) {
+      //     res.locals.globalError = err;
+      //     res.render('users/register', user);
+      //   }
 
-        res.redirect('/');
-      });
+         res.redirect('/');
+      // });
     });
   },
   loginGet: (req, res) => {

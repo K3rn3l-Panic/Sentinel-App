@@ -7,27 +7,29 @@ html(lang="en")
   body
     .container
       ul.menu
-        li
-          a(href="/") Home
-        li
-          a(href="/about") About
-        li
-          a(href="/cameras") Cameras
-        li
-          a(href="/faces") Faces
-        li
-          a(href="/alerts") Alerts
-        li
-          if currentUser
-            li=currentUser.username
+        form(id="logout-form" action="/users/logout" method="POST")
+          li
+            a(class="btn btn-default" href="/") Home
+          li
+            a(class="btn btn-default" href="/about") About
+          li
+            a(class="btn btn-default" href="/cameras") Cameras
+          li
+            a(class="btn btn-default" href="/faces") Faces
+          li
+            a(class="btn btn-default" href="/alerts") Alerts
+          .navRight
+            if currentUser
+              if currentUser.roles[0]
+                li
+                  a(class="btn btn-default" href="/users/register") Register
+            li= currentUser.username
             li
-              form(id="logout-form" action="/users/logout" method="POST")
-                a(href="javascript:document.getElementById('logout-form').submit()") Logout
-          else
-            li
-              a(href="/users/register") Register
-            li
-              a(href="/users/login") Login
+              a(class="btn btn-default" href="javascript:document.getElementById('logout-form').submit()") Logout
+                
+            if !currentUser
+              li
+                a(class="btn btn-default" href="/users/login") Login
       block content
       block scripts
         script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")

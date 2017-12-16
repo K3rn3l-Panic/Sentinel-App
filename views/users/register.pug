@@ -1,16 +1,17 @@
 extends ../layouts/main
 
 block content
-  form(action="/users/register" method="POST") Username
-    input(type="text" name="username" )
-    br
-    | Password
-    input(type="password" name="password" )
-    br
-    | First Name
-    input(type="text" name="firstName" )
-    br
-    | Last Name
-    input(type="text" name="lastName" )
-    br
-    input(type="submit" value="Register" )
+  div(class="col-sm-1 formContainer")
+    form(action="/users/register" method="POST") Username
+      input(type="text" name="username" )
+      br
+      | Password
+      input(type="password" name="password" )
+      br
+      | First Name
+      input(type="text" name="firstName" )
+      br
+      | Last Name
+      input(type="text" name="lastName" )
+      br
+      input(type="submit" value="Register" )
