@@ -1,17 +1,14 @@
 {
-  "name": "blog-system",
-  "version": "0.0.1",
-  "description": "Blog System",
+  "name": "sentinel-app",
+  "version": "1.0.0",
+  "description": "Sentinel backend",
   "main": "index.js",
   "engines": {
     "node": "7.10.0",
     "npm": "4.2.0"
   },
-  "keywords": [
-    "blog",
-    "system"
-  ],
-  "author": "IK",
+  "keywords": ["sentinel", "app"],
+  "author": "Kernel Panic",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.17.2",
@@ -23,5 +20,11 @@
     "passport": "0.3.2",
     "passport-local": "1.0.0",
     "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "nodemon": "^1.13.3"
   }
 }
