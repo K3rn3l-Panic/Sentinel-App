@@ -2,8 +2,8 @@ const Alert = require("mongoose").model("Alert");
 
 module.exports = {
   getAlertsPage: (req, res) => {
+    console.log(req.user)
     Alert.find((err, alerts) => {
-      console.log(alerts)
       res.render("alerts/alerts", {alerts:alerts});
     });
   },
