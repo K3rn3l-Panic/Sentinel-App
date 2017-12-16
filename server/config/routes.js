@@ -1,7 +1,9 @@
 const controllers = require('../controllers');
 const auth = require('./auth');
 var multer  = require('multer');
-var upload = multer({ dest: 'uploads/' });
+var storage = multer.memoryStorage();
+var upload = multer({ dest: 'uploads/', storage: storage });
+
 
 module.exports = (app) => {
   app.get('/', controllers.home.index);
@@ -23,6 +25,9 @@ module.exports = (app) => {
   app.get('/alerts', controllers.alerts.getAlertsPage);
 
   app.post('/faces/add', upload.single('image'), controllers.faces.addFace);
+
+  app.get('/faces/remove/:id', controllers.faces.removeFace);
+  app.get('/faces/all', controllers.faces.getAllFaces);
 
   app.post('/alerts/add',controllers.alerts.addAlert)
 

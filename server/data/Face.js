@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 
 var FaceSchema = new Schema({
     name: String,
+    encoding: String,
     image: String
 });
 

@@ -2,6 +2,7 @@ extends ../layouts/main
 
 block content
 
+  
   h1 Listing, adding and removing faces from database
 
    form(method='POST' action='/faces/add' enctype='multipart/form-data')
@@ -13,3 +14,19 @@ block content
             input#image.form-control(type='file', placeholder='Upload Image' name='image')          
           button.btn.btn-primary(type='submit') Add face
 
+
+  div
+   table
+    thead
+     tr: th People to look for:
+    tbody
+     each person, index in faces
+      tr(class=index % 2 == 0 ? 'odd' : 'even')
+       td
+        img(src="data:image/jpeg;base64, " + person.image, height="100px",width="100px")
+       td=person.name
+       td
+        a(href='/faces/remove/' + person.id +'')
+         span='remove'
+
+          
