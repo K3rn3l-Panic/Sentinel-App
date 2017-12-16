@@ -15,12 +15,13 @@ module.exports = (app) => {
 
   app.get('/cameras', controllers.camera.getStream);
   app.post('/cameras/add', controllers.camera.addCamera);
+  app.post('/cameras/remove', controllers.camera.removeCamera);
 
   app.get('/faces', controllers.faces.getFacesPage);
 
   app.get('/alerts', controllers.alerts.getAlertsPage);
 
-  app.post('/alerts/add',controllers.alerts.addAlert)
+  app.post('/alerts/add', controllers.alerts.addAlert);
   app.all('*', (req, res) => {
     res.status(404);
     res.send('404 Not Found!');
