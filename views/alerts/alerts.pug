@@ -2,3 +2,15 @@ extends ../layouts/main
 
 block content
   h1 Listing and removing alerts
+  table(class="alertTable table table-stripped")
+    thead
+      tr
+        th Name
+        th Timestamp
+        th Camera
+    tbody
+    each al in alerts
+      tr
+        td=al.name
+        td=al.timestamp
+        td=al.camera
