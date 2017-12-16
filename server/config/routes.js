@@ -16,12 +16,15 @@ module.exports = (app) => {
   app.post('/users/logout', controllers.users.logout);
 
   app.get('/cameras', controllers.camera.getStream);
+  app.post('/cameras/add', controllers.camera.addCamera);
 
   app.get('/faces', controllers.faces.getFacesPage);
 
   app.get('/alerts', controllers.alerts.getAlertsPage);
 
   app.post('/faces/add', upload.single('image'), controllers.faces.addFace);
+
+  app.post('/alerts/add',controllers.alerts.addAlert)
 
   app.all('*', (req, res) => {
     res.status(404);
