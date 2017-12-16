@@ -19,6 +19,7 @@ module.exports = (app) => {
 
   app.get('/alerts', controllers.alerts.getAlertsPage);
 
+  app.post('/alerts/add',controllers.alerts.addAlert)
   app.all('*', (req, res) => {
     res.status(404);
     res.send('404 Not Found!');
