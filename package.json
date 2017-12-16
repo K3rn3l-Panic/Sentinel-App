@@ -7,6 +7,11 @@
     "node": "7.10.0",
     "npm": "4.2.0"
   },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "./node_modules/.bin/nodemon index.js",
+    "escheck": "./node_modules/.bin/eslint ."
+  },
   "keywords": ["sentinel", "app"],
   "author": "Kernel Panic",
   "license": "MIT",
