@@ -7,9 +7,17 @@ module.exports = (app) => {
 
   app.get('/users/register', controllers.users.registerGet);
   app.post('/users/register', controllers.users.registerPost);
+
   app.get('/users/login', controllers.users.loginGet);
   app.post('/users/login', controllers.users.loginPost);
+
   app.post('/users/logout', controllers.users.logout);
+
+  app.get('/cameras', controllers.camera.getStream);
+
+  app.get('/faces', controllers.faces.getFacesPage);
+
+  app.get('/alerts', controllers.alerts.getAlertsPage);
 
   app.all('*', (req, res) => {
     res.status(404);
