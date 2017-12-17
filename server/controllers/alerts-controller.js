@@ -8,18 +8,21 @@ module.exports = {
     const { body } = req;
 
     Alert.create({
-      name: body.name,
+      names: body.names,
       image: body.image,
       timestamp: body.timestamp,
-    }).then(() => {
-      res.json({ success: 'true', message: 'Alert created!' });
-    });
+    })
+      .then(() => {
+        res.json({ success: 'true', message: 'Alert created!' });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   removeAlert: (req, res) => {
-    const { timestamp } = req.body;
-    console.log(timestamp);
+    const { id } = req.body;
 
-    Alert.findOne({ timestamp }).remove((err) => {
+    Alert.findOne({ _id: id }).remove((err) => {
       res.redirect('/alerts');
     });
   },

@@ -25,7 +25,7 @@ module.exports = {
       //     res.render('users/register', user);
       //   }
 
-         res.redirect('/');
+      res.redirect('/');
       // });
     });
   },
