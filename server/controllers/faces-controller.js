@@ -1,53 +1,52 @@
 const Face = require('mongoose').model('Face');
 const Camera = require('mongoose').model('Camera');
 
-
-var axios = require('axios');
+const axios = require('axios');
 
 module.exports = {
   getFacesPage: (req, res) => {
-  	Face.find((error, faces)=>{
-  		console.log(faces);
-  		   res.render('faces/faces', {faces: faces});
-  	});
+    Face.find((error, faces) => {
+      console.log(faces);
+      res.render('faces/faces', { faces });
+    });
   },
 
   getAllFaces: (req, res) => {
-  	Face.find((error, faces)=>{
-  		
-  		   res.json(faces);
-  	});
+    Face.find((error, faces) => {
+      res.json(faces);
+    });
   },
 
   removeFace: (req, res) => {
-  	var id = req.params.id;
-  	Face.find({ _id: id }).remove().then(function(err) {
-  		res.redirect('/faces');
-  	})
+    const id = req.params.id;
+    Face.find({ _id: id })
+      .remove()
+      .then((err) => {
+        res.redirect('/faces');
+      });
   },
 
   addFace: (req, res) => {
-    //console.log(req.file, 'file -----');
-    var name = req.body.name;
+    // console.log(req.file, 'file -----');
+    const name = req.body.name;
 
-    var base64Image = new Buffer(req.file.buffer).toString('base64')
-    
+    const base64Image = new Buffer(req.file.buffer).toString('base64');
 
-	axios.post('http://localhost:5000/encode', {
-	
-			image: base64Image
-	})
-	  .then(function (response) {
-	  	Face.create({
-	      name: name,
-	      encoding: response.data.encoding,
-	      image: base64Image
-	    });
-	    res.redirect('/faces');
-	  }).catch(function(error) { 
+    axios
+      .post('http://localhost:5000/encode', {
+        image: base64Image,
+      })
+      .then((response) => {
+        Face.create({
+          name,
+          encoding: response.data.encoding,
+          image: base64Image,
+        });
+        res.redirect('/faces');
+      })
+      .catch((error) => {
         console.log(error);
-    });
-
-    
+        res.redirect('/faces');
+      });
   },
 };

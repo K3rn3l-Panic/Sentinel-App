@@ -1,5 +1,7 @@
 extends ../layouts/main
 
 block content
-  img(src=camera.url)
-  h1=camera.name
+
+  div.text-center
+  	h1=camera.name
+    img(src=camera.url alt="Stream not online!").rounded

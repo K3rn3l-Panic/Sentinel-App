@@ -27,6 +27,7 @@ module.exports = (app) => {
 
   app.get('/alerts', auth.isAuthenticated, controllers.alerts.getAlertsPage);
   app.post('/alerts/add', controllers.alerts.addAlert);
+  app.post('/alerts/remove', controllers.alerts.removeAlert);
 
   app.all('*', (req, res) => {
     res.status(404);

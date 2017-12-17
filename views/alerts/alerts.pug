@@ -15,3 +15,7 @@ block content
         td=al.timestamp
         td
           img(src="data:image/jpeg;base64," + al.image)
+        td
+          form(action="/alerts/remove" method="POST")
+            input(type="hidden" name="timestamp" value=al.timestamp)
+            input(type="submit" value="False alarm")

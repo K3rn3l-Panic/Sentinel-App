@@ -1,13 +1,13 @@
-//Require Mongoose
-var mongoose = require('mongoose');
+// Require Mongoose
+const mongoose = require('mongoose');
 
-//Define a schema
-var Schema = mongoose.Schema;
+// Define a schema
+const Schema = mongoose.Schema;
 
-var FaceSchema = new Schema({
-    name: String,
-    encoding: String,
-    image: String
+const FaceSchema = new Schema({
+  name: { type: String, required: 'The name is required!', unique: true },
+  encoding: { type: String, required: 'The encoding is required!', unique: false },
+  image: { type: String, required: 'The image is required!', unique: false },
 });
 
 const Face = mongoose.model('Face', FaceSchema);
