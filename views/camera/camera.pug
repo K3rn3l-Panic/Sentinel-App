@@ -17,15 +17,57 @@ block content
         button(type="submit" class="btn btn-primary") Add Camera
 
 
-  div
-    table
-      thead
-        tr: th List of cameras:
-      tbody(class="container")
-      each camera in cameras
-        tr(class=index % 2 == 0 ? 'odd row' : 'even row')
-          td(class="col-8")
-            a(href="/cameras/" + camera._id) #{camera.name}
-          td(class="col-4")
-            a(href='/cameras/remove/' + camera._id)
-              span(class="red")='Remove'
+  div(class="row")
+    div(class="col-md-6 col-sm-12")
+      table
+        thead
+          tr: th List of cameras:
+        tbody
+        each camera in cameras
+          tr(class=index % 2 == 0 ? 'odd row' : 'even row')
+            td(class="col-8")
+              a(href="/cameras/" + camera._id class="camera") #{camera.name}
+            td(class="col-4")
+              a(href='/cameras/remove/' + camera._id)
+                span(class="red")='Remove'
+    div(class="col-md-5 col-sm-12")
+      div(id="map")
+  script.
+      function initMap() {
+        var camerasHTML = document.getElementsByClassName('camera');
+        var camerasCoords = [];
+        for(var i = 0; i < camerasHTML.length; i++)
+        {
+           camerasCoords.push(
+             new google.maps.LatLng(
+               parseFloat(camerasHTML[i].innerText.split(',')[0].trim()),
+               parseFloat(camerasHTML[i].innerText.split(',')[1].trim())
+             )
+           )
+        }
+
+        console.log(camerasCoords);
+        var myLatLng = {lat: 42.699019, lng: 23.321206};
+        var bounds = new google.maps.LatLngBounds();
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 1,
+          center: myLatLng
+        });
+        var marker;
+        for(var i = 0; i < camerasCoords.length; i++)
+        {
+          bounds.extend(camerasCoords[i]);
+          marker = new google.maps.Marker({
+            position: camerasCoords[i],
+            map: map
+          });
+        }
+        map.fitBounds(bounds);
+        var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+          this.setZoom(14);
+          google.maps.event.removeListener(boundsListener);
+        });
+      }
+    
+  script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAweX_sScdM-rHumVmv6NkSFZbggg1Nj7c&callback=initMap").
+  
