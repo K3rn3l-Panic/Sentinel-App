@@ -6,7 +6,6 @@ const axios = require('axios');
 module.exports = {
   getFacesPage: (req, res) => {
     Face.find((error, faces) => {
-      console.log(faces);
       res.render('faces/faces', { faces });
     });
   },
@@ -45,7 +44,6 @@ module.exports = {
         res.redirect('/faces');
       })
       .catch((error) => {
-        console.log(error);
         res.redirect('/faces');
       });
   },
