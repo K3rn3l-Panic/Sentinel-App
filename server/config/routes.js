@@ -15,9 +15,10 @@ module.exports = (app) => {
   app.post('/users/login', controllers.users.loginPost);
   app.post('/users/logout', controllers.users.logout);
 
-  app.get('/cameras', auth.isAuthenticated, controllers.camera.getStream);
+  app.get('/cameras', auth.isAuthenticated, controllers.camera.getCameras);
+  app.get('/cameras/:id', auth.isAuthenticated, controllers.camera.getStream);
   app.post('/cameras/add', auth.isAuthenticated, controllers.camera.addCamera);
-  app.post('/cameras/remove', auth.isAuthenticated, controllers.camera.removeCamera);
+  app.post('/cameras/remove/:id', auth.isAuthenticated, controllers.camera.removeCamera);
 
   app.get('/faces', auth.isAuthenticated, controllers.faces.getFacesPage);
   app.get('/faces/remove/:id', controllers.faces.removeFace);

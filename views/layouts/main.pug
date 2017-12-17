@@ -9,15 +9,12 @@ html(lang="en")
       ul.menu
         form(id="logout-form" action="/users/logout" method="POST")
           li
-            a(class="btn btn-default" href="/") Home
-          li
-            a(class="btn btn-default" href="/about") About
+            a(class="btn btn-default" href="/alerts") Alerts
           li
             a(class="btn btn-default" href="/cameras") Cameras
           li
             a(class="btn btn-default" href="/faces") Faces
-          li
-            a(class="btn btn-default" href="/alerts") Alerts
+         
           .navRight
             if currentUser
               if currentUser.roles[0]

@@ -1,16 +1,20 @@
 const Camera = require('mongoose').model('Camera');
 
 module.exports = {
-  getStream: (req, res) => {
-    if (req.query.id) {
-      Camera.findOne({ _id: req.query.id }).exec((err, camera) => {
-        res.render('camera/stream', { camera });
-      });
-    } else {
+  getCameras: (req, res) => {
+  
       Camera.find({}).exec((err, cameras) => {
         res.render('camera/camera', { cameras });
       });
-    }
+    
+  },
+  getStream: (req, res) => {
+
+      Camera.findOne({ _id: req.params.id }).exec((err, camera) => {
+        //console.log(req.params.id , 'kamera');
+        res.render('camera/stream', { camera });
+      });
+    
   },
   addCamera: (req, res) => {
     const cameraUrl = req.body.address;
@@ -24,9 +28,10 @@ module.exports = {
     });
   },
   removeCamera: (req, res) => {
-    const cameraName = req.body.name;
+    console.log('remove cam');
+    const cameraId= req.params.id;
 
-    Camera.findOne({ name: cameraName }).remove((err) => {
+    Camera.findOne({ _id: cameraId }).remove((err) => {
       res.redirect('/cameras');
     });
   },

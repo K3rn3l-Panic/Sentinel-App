@@ -4,7 +4,7 @@ block content
 
   
   h1 Listing, adding and removing faces from database
-
+  div(class="col-8")
    form(method='POST' action='/faces/add' enctype='multipart/form-data')
           div.form-group
             label(for='name') Name:
@@ -27,6 +27,6 @@ block content
        td=person.name
        td
         a(href='/faces/remove/' + person.id +'')
-         span='remove'
+         span(class="red")='remove'
 
           

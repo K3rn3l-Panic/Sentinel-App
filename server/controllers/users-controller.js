@@ -53,7 +53,7 @@ module.exports = {
           res.render('users/login');
         }
 
-        res.redirect('/');
+        res.redirect('/alerts');
       });
     });
   },

@@ -32,3 +32,22 @@ h1 {
 .alertTable td{
   border-right: 1px solid lightgray;
 }
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex {
+  display:flex;
+}
+.fullscreen {
+  height: 100vh;
+}
+.login-button {
+      background-color: #000 !important;
+      color: #fff;
+    border-color: #fff !important;
+}
+.red {
+  color: red !important;
+}

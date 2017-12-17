@@ -1,16 +1,31 @@
 extends ../layouts/main
 
 block content
-  ul
-    each camera in cameras
-      li
-        a(href="/cameras?id=" + camera._id) #{camera.name}
-        form(action="/cameras/remove" method="POST")
-          input(type="hidden" name="name" value=camera.name)
-          input(type="submit" value="Remove")
-  form(action="/cameras/add" method="POST")
-    | Camera name
-    input(type="text" name="name")
-    | Camera url
-    input(type="text" name="address")
-    input(type="submit" value="Add")
+  div(class="col-8")
+    form(action="/cameras/add" method="POST")
+      div(class="form-group row")
+        label(class="form-label col-1" for="name") Name
+          
+        div(class="col-11")
+          input(type="text" name="name" id="name")
+      div(class="form-group row")
+        label(class="form-label col-1" for="url") Url
+          
+        div(class="col-11")
+          input(type="text" name="address" id="url")
+      div(class="form-group row")
+        button(type="submit" class="btn btn-primary") Add Camera
+
+
+  div
+    table
+      thead
+        tr: th List of cameras:
+      tbody(class="container")
+      each camera in cameras
+        tr(class=index % 2 == 0 ? 'odd row' : 'even row')
+          td(class="col-8")
+            a(href="/cameras/" + camera._id) #{camera.name}
+          td(class="col-4")
+            a(href='/cameras/remove/' + camera._id)
+              span(class="red")='Remove'
