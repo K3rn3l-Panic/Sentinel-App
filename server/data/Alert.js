@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const alertSchema = new mongoose.Schema({
-  image: { type: String },
-  name: { type: String },
-  timestamp: { type: String }
+  image: { type: String, required: 'The image is required!' },
+  names: { type: Array, required: 'The names are required!' },
+  timestamp: { type: String, required: 'The timestamp is required!' },
 });
 
-alertSchema.methods.func = function(a) {};
-const Alert = mongoose.model("Alert", alertSchema);
+alertSchema.methods.func = function (a) {};
+const Alert = mongoose.model('Alert', alertSchema);
 module.exports = Alert;

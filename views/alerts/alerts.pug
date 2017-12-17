@@ -11,11 +11,13 @@ block content
     tbody
     each al in alerts
       tr
-        td=al.name
+        td
+          each name in al.names
+            h3= name
         td=al.timestamp
         td
           img(src="data:image/jpeg;base64," + al.image)
         td
           form(action="/alerts/remove" method="POST")
-            input(type="hidden" name="timestamp" value=al.timestamp)
+            input(type="hidden" name="id" value=al._id)
             input(type="submit" value="False alarm")

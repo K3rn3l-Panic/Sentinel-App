@@ -8,7 +8,7 @@ module.exports = {
     const { body } = req;
 
     Alert.create({
-      name: body.name,
+      names: body.names,
       image: body.image,
       timestamp: body.timestamp,
     }).then(() => {
@@ -16,10 +16,9 @@ module.exports = {
     });
   },
   removeAlert: (req, res) => {
-    const { timestamp } = req.body;
-    console.log(timestamp);
+    const { id } = req.body;
 
-    Alert.findOne({ timestamp }).remove((err) => {
+    Alert.findOne({ _id: id }).remove((err) => {
       res.redirect('/alerts');
     });
   },
