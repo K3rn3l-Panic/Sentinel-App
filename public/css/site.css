@@ -20,6 +20,15 @@ h1 {
 .navRight {
   float: right;
 }
+.navRight li{
+  float:right;
+}
+#logout-form{
+  width:100%;
+}
+.usrName{
+  color: black;
+}
 .formContainer {
   position: absolute;
   left: 40%;
