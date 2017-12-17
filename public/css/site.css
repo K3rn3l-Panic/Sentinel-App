@@ -60,3 +60,6 @@ h1 {
 .red {
   color: red !important;
 }
+#map {
+  min-height: 500px;
+}
