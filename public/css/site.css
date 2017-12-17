@@ -17,12 +17,15 @@ h1 {
 .menu li:after {
   content: "\00a0";
 }
-.navRight {
-  float: right;
+@media screen and (min-width: 768px) {
+  .navRight {
+    float: right;
+  }
+  .navRight li{
+    float:right;
+  }
 }
-.navRight li{
-  float:right;
-}
+
 #logout-form{
   width:100%;
 }

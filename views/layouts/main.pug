@@ -12,16 +12,12 @@ html(lang="en")
           form(id="logout-form" action="/users/logout" method="POST")
             ul(class="navbar-nav mr-auto row offset-sm-2")
               li
-                a(class="btn btn-default " href="/") Home
-              li
-                a(class="btn btn-default " href="/about") About
+                a(class="btn btn-default " href="/alerts") Alerts
               li
                 a(class="btn btn-default " href="/cameras") Cameras
               l
                 a(class="btn btn-default " href="/faces") Faces
-              li
-                a(class="btn btn-default " href="/alerts") Alerts
-              div.offset-sm-2.navRight
+              div.offset-md-2.navRight
                 if currentUser
                   if currentUser.roles[0]
                     li

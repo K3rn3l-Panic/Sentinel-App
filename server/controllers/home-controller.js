@@ -2,7 +2,7 @@ const auth = require('../config/auth');
 
 module.exports = {
   index: (req, res) => {
-    res.render('home/index');
+    res.redirect('/alerts');
   },
   about: (req, res) => {
     res.render('home/about');
