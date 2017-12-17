@@ -5,28 +5,35 @@ html(lang="en")
     link(href="/css/site.css" type="text/css" rel="stylesheet")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous")
   body
-    .container
-      ul.menu
-        form(id="logout-form" action="/users/logout" method="POST")
-          li
-            a(class="btn btn-default" href="/alerts") Alerts
-          li
-            a(class="btn btn-default" href="/cameras") Cameras
-          li
-            a(class="btn btn-default" href="/faces") Faces
-         
-          .navRight
-            if currentUser
-              if currentUser.roles[0]
-                li
-                  a(class="btn btn-default" href="/users/register") Register
-            li= currentUser.username
-            li
-              a(class="btn btn-default" href="javascript:document.getElementById('logout-form').submit()") Logout
-
-            if !currentUser
+      nav(class="navbar  navbar-toggleable-md navbar-expand-md navbar-light bg-faded")
+        button( class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+          span( class="navbar-toggler-icon")
+        div(class="collapse navbar-collapse" id="navbarSupportedContent")
+          form(id="logout-form" action="/users/logout" method="POST")
+            ul(class="navbar-nav mr-auto row offset-sm-2")
               li
-                a(class="btn btn-default" href="/users/login") Login
+                a(class="btn btn-default " href="/") Home
+              li
+                a(class="btn btn-default " href="/about") About
+              li
+                a(class="btn btn-default " href="/cameras") Cameras
+              l
+                a(class="btn btn-default " href="/faces") Faces
+              li
+                a(class="btn btn-default " href="/alerts") Alerts
+              div.offset-sm-2.navRight
+                if currentUser
+                  if currentUser.roles[0]
+                    li
+                      a(class="btn btn-default " href="/users/register") Register
+                  li
+                    a(class="btn btn-default  usrName" href="/alerts")=currentUser.username
+                  li
+                    a(class="btn btn-default " href="javascript:document.getElementById('logout-form').submit()") Logout
+
+                if !currentUser
+                  li
+                    a(class="btn btn-default nav-link" href="/users/login") Login
       block content
       block scripts
         script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
